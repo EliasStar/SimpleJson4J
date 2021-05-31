@@ -4,8 +4,7 @@ public class FSMException extends JSONException {
 
     private static final long serialVersionUID = 1L;
 
-    public FSMException() {
-    }
+    public FSMException() {}
 
     public FSMException(int state) {
         super("Remaining State: " + Integer.toString(state));

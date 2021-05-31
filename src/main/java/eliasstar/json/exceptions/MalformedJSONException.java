@@ -4,8 +4,7 @@ public class MalformedJSONException extends JSONException {
 
     private static final long serialVersionUID = 1L;
 
-    public MalformedJSONException() {
-    }
+    public MalformedJSONException() {}
 
     public MalformedJSONException(String message) {
         super(message);

@@ -4,8 +4,7 @@ public class JSONNumberFormatException extends MalformedJSONException {
 
     private static final long serialVersionUID = 1L;
 
-    public JSONNumberFormatException() {
-    }
+    public JSONNumberFormatException() {}
 
     public JSONNumberFormatException(String message) {
         super(message);

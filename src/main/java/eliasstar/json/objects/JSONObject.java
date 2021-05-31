@@ -33,10 +33,11 @@ public class JSONObject extends Object implements JSONSerializable {
             }
         }
 
-        if (index != -1)
+        if (index != -1) {
             members.set(index, new JSONNameValuePair<>(name, value));
-        else
+        } else {
             members.add(new JSONNameValuePair<>(name, value));
+        }
 
         return this;
     }
@@ -59,6 +60,7 @@ public class JSONObject extends Object implements JSONSerializable {
             if (member.getName().equals(name))
                 return member.getValue();
         }
+
         return null;
     }
 
@@ -67,6 +69,7 @@ public class JSONObject extends Object implements JSONSerializable {
             if (m.getName().equals(name))
                 members.remove(m);
         });
+
         return this;
     }
 
@@ -75,6 +78,7 @@ public class JSONObject extends Object implements JSONSerializable {
             if (member.getName().equals(name))
                 return true;
         }
+
         return false;
     }
 
@@ -97,6 +101,7 @@ public class JSONObject extends Object implements JSONSerializable {
         this.members.forEach(m -> {
             members.put(m.getName(), m.getValue());
         });
+
         return members;
     }
 
@@ -115,8 +120,6 @@ public class JSONObject extends Object implements JSONSerializable {
             }
         }
 
-        json += "}";
-
-        return json;
+        return json + "}";
     }
 }

@@ -60,16 +60,14 @@ public class JSONArray extends Object implements JSONSerializable {
         try {
             for (int i = 0; i < values.size(); i++) {
                 json += JSON.toJSON(values.get(i));
-                if (i < values.size() - 1) {
+
+                if (i < values.size() - 1)
                     json += ",";
-                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        json += "]";
-
-        return json;
+        return json + "]";
     }
 }

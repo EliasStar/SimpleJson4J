@@ -4,8 +4,7 @@ public class InvalidJSONTypeException extends MalformedJSONException {
 
     private static final long serialVersionUID = 1L;
 
-    public InvalidJSONTypeException() {
-    }
+    public InvalidJSONTypeException() {}
 
     public InvalidJSONTypeException(String message) {
         super(message);

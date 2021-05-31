@@ -1,9 +1,9 @@
-# JsonRpc4J
-> A general JSON-RPC 2.0 Wrapper for Java
+# SimpleJson4J
+> Simple yet general JSON library for Java providing a toJson and fromJson method
 
 ## Downloads
 ### Jar
-Releases can be downloaded [here](https://github.com/EliasStar/JsonRpc4J/releases).
+Releases can be downloaded [here](https://github.com/EliasStar/SimpleJson4J/releases).
 If you need an "all in one" jar, grab the one with the jar-with-dependencies suffix. I includes the dependencies, therefore you don't need anything else.
 If you want to manage your dependencies yourself use the one without a suffix.
 "sources" suffix includes the raw, uncompiled sourcecode for reference and the javadoc can be found in the "javadoc" suffix jar.
@@ -14,15 +14,15 @@ Add the following under `project/repositories` tag:
 ```xml
 <repository>
     <id>github</id>
-    <name>JsonRpc4J GitHub Maven Packages</name>
-    <url>https://maven.pkg.github.com/EliasStar/JsonRpc4J</url>
+    <name>SimpleJson4J GitHub Maven Packages</name>
+    <url>https://maven.pkg.github.com/EliasStar/SimpleJson4J</url>
 </repository>
 ```
 Furthermore add the following under `project/dependencies` tag:
 ```xml
 <dependency>
     <groupId>eliasstar</groupId>
-    <artifactId>json-rpc</artifactId>
+    <artifactId>simple-json</artifactId>
     <version>VERSION</version>
 </dependency>
 ```
@@ -84,8 +84,8 @@ var results = con.sendBatchRequest(
 
 
 ## License
-JsonRpc4J - A general JSON-RPC 2.0 Wrapper for Java <br>
-Copyright (C) 2020 Elias*
+SimpleJson4J - Simple yet general JSON library for Java providing a toJson and fromJson method <br>
+Copyright (C) 2021 Elias*
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

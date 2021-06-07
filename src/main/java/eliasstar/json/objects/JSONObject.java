@@ -5,26 +5,32 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import eliasstar.json.JSONSerializable;
+import eliasstar.json.JsonSerializable;
 
-public class JSONObject extends Object implements JSONSerializable {
+/**
+ * Represents a JSON object.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class JsonObject extends Object implements JsonSerializable {
 
-    private final ArrayList<JSONNameValuePair<Object>> members;
+    private final ArrayList<JsonNameValuePair<Object>> members;
 
-    public JSONObject() {
+    public JsonObject() {
         this.members = new ArrayList<>();
     }
 
-    public JSONObject(List<JSONNameValuePair<Object>> members) {
+    public JsonObject(List<JsonNameValuePair<Object>> members) {
         this.members = new ArrayList<>(members);
     }
 
-    public JSONObject(Map<String, Object> members) {
+    public JsonObject(Map<String, Object> members) {
         this.members = new ArrayList<>();
-        members.forEach((n, v) -> this.members.add(new JSONNameValuePair<>(n, v)));
+        members.forEach((n, v) -> this.members.add(new JsonNameValuePair<>(n, v)));
     }
 
-    public JSONObject setMember(String name, Object value) {
+    public JsonObject setMember(String name, Object value) {
         int index = -1;
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name)) {
@@ -34,15 +40,15 @@ public class JSONObject extends Object implements JSONSerializable {
         }
 
         if (index != -1) {
-            members.set(index, new JSONNameValuePair<>(name, value));
+            members.set(index, new JsonNameValuePair<>(name, value));
         } else {
-            members.add(new JSONNameValuePair<>(name, value));
+            members.add(new JsonNameValuePair<>(name, value));
         }
 
         return this;
     }
 
-    public JSONObject setMember(String name, Object value, int index) {
+    public JsonObject setMember(String name, Object value, int index) {
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getName().equals(name) && index != i) {
                 index = i;
@@ -50,13 +56,13 @@ public class JSONObject extends Object implements JSONSerializable {
             }
         }
 
-        members.set(index, new JSONNameValuePair<>(name, value));
+        members.set(index, new JsonNameValuePair<>(name, value));
 
         return this;
     }
 
     public Object getMember(String name) {
-        for (JSONNameValuePair<Object> member : members) {
+        for (JsonNameValuePair<Object> member : members) {
             if (member.getName().equals(name))
                 return member.getValue();
         }
@@ -64,7 +70,7 @@ public class JSONObject extends Object implements JSONSerializable {
         return null;
     }
 
-    public JSONObject removeMember(String name) {
+    public JsonObject removeMember(String name) {
         members.forEach(m -> {
             if (m.getName().equals(name))
                 members.remove(m);
@@ -74,7 +80,7 @@ public class JSONObject extends Object implements JSONSerializable {
     }
 
     public boolean existsMember(String name) {
-        for (JSONNameValuePair<Object> member : members) {
+        for (JsonNameValuePair<Object> member : members) {
             if (member.getName().equals(name))
                 return true;
         }
@@ -82,18 +88,18 @@ public class JSONObject extends Object implements JSONSerializable {
         return false;
     }
 
-    public void setAllMembers(List<JSONNameValuePair<Object>> members) {
+    public void setAllMembers(List<JsonNameValuePair<Object>> members) {
         clear();
         this.members.addAll(members);
     }
 
-    public List<JSONNameValuePair<Object>> getAllMembers() {
+    public List<JsonNameValuePair<Object>> getAllMembers() {
         return members;
     }
 
     public void setMembers(Map<String, Object> members) {
         clear();
-        members.forEach((n, v) -> this.members.add(new JSONNameValuePair<>(n, v)));
+        members.forEach((n, v) -> this.members.add(new JsonNameValuePair<>(n, v)));
     }
 
     public Map<String, Object> getMembers() {

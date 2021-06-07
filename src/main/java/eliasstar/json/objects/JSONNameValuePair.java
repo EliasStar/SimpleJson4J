@@ -1,19 +1,25 @@
 package eliasstar.json.objects;
 
-import eliasstar.json.JSON;
-import eliasstar.json.exceptions.JSONException;
+import eliasstar.json.Json;
+import eliasstar.json.exceptions.JsonException;
 
-public class JSONNameValuePair<V> extends Object {
+/**
+ * Represents a JSON field.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class JsonNameValuePair<V> extends Object {
 
     private String name;
     private V value;
 
-    public JSONNameValuePair(String name) {
+    public JsonNameValuePair(String name) {
         this.name = name;
         this.value = null;
     }
 
-    public JSONNameValuePair(String name, V value) {
+    public JsonNameValuePair(String name, V value) {
         this.name = name;
         this.value = value;
     }
@@ -33,8 +39,8 @@ public class JSONNameValuePair<V> extends Object {
     @Override
     public String toString() {
         try {
-            return '"' + name + "\":" + JSON.toJSON(value);
-        } catch (JSONException e) {
+            return '"' + name + "\":" + Json.toJson(value);
+        } catch (JsonException e) {
             e.printStackTrace();
             return "\"Error\":\"" + e.getMessage() + '"';
         }

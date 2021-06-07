@@ -1,20 +1,26 @@
 package eliasstar.json.exceptions;
 
-public class MalformedJSONException extends JSONException {
+/**
+ * Indicates an error in the input JSON.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class MalformedJsonException extends JsonException {
 
     private static final long serialVersionUID = 1L;
 
-    public MalformedJSONException() {}
+    public MalformedJsonException() {}
 
-    public MalformedJSONException(String message) {
+    public MalformedJsonException(String message) {
         super(message);
     }
 
-    public MalformedJSONException(Throwable cause) {
+    public MalformedJsonException(Throwable cause) {
         super(cause);
     }
 
-    public MalformedJSONException(String message, Throwable cause) {
+    public MalformedJsonException(String message, Throwable cause) {
         super(message, cause);
     }
 }

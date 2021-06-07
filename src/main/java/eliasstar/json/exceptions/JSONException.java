@@ -1,20 +1,26 @@
 package eliasstar.json.exceptions;
 
-public class JSONException extends Exception {
+/**
+ * Root exception with is extended by all json-specific exceptions.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class JsonException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    public JSONException() {}
+    public JsonException() {}
 
-    public JSONException(String message) {
+    public JsonException(String message) {
         super(message);
     }
 
-    public JSONException(Throwable cause) {
+    public JsonException(Throwable cause) {
         super(cause);
     }
 
-    public JSONException(String message, Throwable cause) {
+    public JsonException(String message, Throwable cause) {
         super(message, cause);
     }
 

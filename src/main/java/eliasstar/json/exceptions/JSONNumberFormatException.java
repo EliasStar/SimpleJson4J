@@ -1,20 +1,26 @@
 package eliasstar.json.exceptions;
 
-public class JSONNumberFormatException extends MalformedJSONException {
+/**
+ * Indicates that a number in the input JSON was not formatted properly.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class JsonNumberFormatException extends MalformedJsonException {
 
     private static final long serialVersionUID = 1L;
 
-    public JSONNumberFormatException() {}
+    public JsonNumberFormatException() {}
 
-    public JSONNumberFormatException(String message) {
+    public JsonNumberFormatException(String message) {
         super(message);
     }
 
-    public JSONNumberFormatException(Throwable cause) {
+    public JsonNumberFormatException(Throwable cause) {
         super(cause);
     }
 
-    public JSONNumberFormatException(String message, Throwable cause) {
+    public JsonNumberFormatException(String message, Throwable cause) {
         super(message, cause);
     }
 }

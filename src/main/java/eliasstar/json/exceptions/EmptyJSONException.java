@@ -1,12 +1,18 @@
 package eliasstar.json.exceptions;
 
-public class EmptyJSONException extends JSONException {
+/**
+ * Indicates an empty input JSON.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class EmptyJsonException extends JsonException {
 
     private static final long serialVersionUID = 1L;
 
-    public EmptyJSONException() {}
+    public EmptyJsonException() {}
 
-    public EmptyJSONException(Throwable cause) {
+    public EmptyJsonException(Throwable cause) {
         super(cause);
     }
 }

@@ -1,20 +1,27 @@
 package eliasstar.json.exceptions;
 
-public class InvalidJSONTypeException extends MalformedJSONException {
+/**
+ * Indicates a type error in the input JSON such as field names not being
+ * strings.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class InvalidJsonTypeException extends MalformedJsonException {
 
     private static final long serialVersionUID = 1L;
 
-    public InvalidJSONTypeException() {}
+    public InvalidJsonTypeException() {}
 
-    public InvalidJSONTypeException(String message) {
+    public InvalidJsonTypeException(String message) {
         super(message);
     }
 
-    public InvalidJSONTypeException(Throwable cause) {
+    public InvalidJsonTypeException(Throwable cause) {
         super(cause);
     }
 
-    public InvalidJSONTypeException(String message, Throwable cause) {
+    public InvalidJsonTypeException(String message, Throwable cause) {
         super(message, cause);
     }
 

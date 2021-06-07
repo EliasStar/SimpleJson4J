@@ -3,28 +3,34 @@ package eliasstar.json.objects;
 import java.util.ArrayList;
 import java.util.List;
 
-import eliasstar.json.JSON;
-import eliasstar.json.JSONSerializable;
-import eliasstar.json.exceptions.JSONException;
+import eliasstar.json.Json;
+import eliasstar.json.JsonSerializable;
+import eliasstar.json.exceptions.JsonException;
 
-public class JSONArray extends Object implements JSONSerializable {
+/**
+ * Represents a JSON array.
+ *
+ * @author Elias*
+ * @since 1.0.0
+ */
+public class JsonArray extends Object implements JsonSerializable {
 
     private final ArrayList<Object> values;
 
-    public JSONArray() {
+    public JsonArray() {
         this.values = new ArrayList<>(0);
     }
 
-    public JSONArray(List<Object> values) {
+    public JsonArray(List<Object> values) {
         this.values = new ArrayList<>(values);
     }
 
-    public JSONArray addValue(Object value) {
+    public JsonArray addValue(Object value) {
         values.add(value);
         return this;
     }
 
-    public JSONArray addValue(Object value, int index) {
+    public JsonArray addValue(Object value, int index) {
         values.add(index, value);
         return this;
     }
@@ -33,7 +39,7 @@ public class JSONArray extends Object implements JSONSerializable {
         return values.get(index);
     }
 
-    public JSONArray removeValue(Object value) {
+    public JsonArray removeValue(Object value) {
         while (values.contains(value)) {
             values.remove(value);
         }
@@ -59,12 +65,12 @@ public class JSONArray extends Object implements JSONSerializable {
 
         try {
             for (int i = 0; i < values.size(); i++) {
-                json += JSON.toJSON(values.get(i));
+                json += Json.toJson(values.get(i));
 
                 if (i < values.size() - 1)
                     json += ",";
             }
-        } catch (JSONException e) {
+        } catch (JsonException e) {
             e.printStackTrace();
         }
 

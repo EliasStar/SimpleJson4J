@@ -4,7 +4,7 @@
 ## Downloads
 ### Jar
 Releases can be downloaded [here](https://github.com/EliasStar/SimpleJson4J/releases).
-If you need an "all in one" jar, grab the one with the jar-with-dependencies suffix. I includes the dependencies, therefore you don't need anything else.
+I includes the dependencies, therefore you don't need anything else.
 If you want to manage your dependencies yourself use the one without a suffix.
 "sources" suffix includes the raw, uncompiled sourcecode for reference and the javadoc can be found in the "javadoc" suffix jar.
 

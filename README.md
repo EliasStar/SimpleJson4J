@@ -40,49 +40,6 @@ Add the following under `settings/servers` tag:
 ```
 Be sure to replace `YOUR_USERNAME` and `YOUR_PERSONAL_ACCESS_TOKEN`.
 
-## Usage
-### Get a connection
-```java
-// Simple
-var con = JsonRpc.connect("https://example.com/jsonrpc.do");
-```
-```java
-// Customizable
-var client = HttpClient.newHttpClient();
-var gson = new Gson();
-
-var con = new ConnectionBuilder(client, "https://example.com/jsonrpc.do").setGson(gson).build();
-```
-
-### Make a request
-```java
-// Remote procedure call
-var result = con.callRemoteProcedure("exampleMethod");
-```
-```java
-// With parameters
-var params = new JsonArray();
-
-params.add("foo");
-params.add(42);
-
-var result = con.callRemoteProcedure("exampleMethod", params);
-```
-```java
-// Notification
-con.sendNotification("exampleNotification");
-```
-
-```java
-// Batch request
-var results = con.sendBatchRequest(
-    new Request(0, "firstMethod"),
-    new Request(1, "secondMethod"),
-    new Notification("exampleNotification")
-);
-```
-
-
 ## License
 SimpleJson4J - Simple yet general JSON library for Java providing a toJson and fromJson method <br>
 Copyright (C) 2021 Elias*
@@ -90,12 +47,12 @@ Copyright (C) 2021 Elias*
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see https://www.gnu.org/licenses.
+along with this program. If not, see <https://www.gnu.org/licenses/>.

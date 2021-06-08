@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2021 Elias*
+ *
+ * This file is part of SimpleJson4J.
+ *
+ * SimpleJson4J is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or any later version.
+ *
+ * SimpleJson4J is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * SimpleJson4J. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package eliasstar.json;
 
 import java.io.BufferedReader;
@@ -8,16 +26,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.text.NumberFormat;
-import java.text.ParseException;
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 import eliasstar.json.exceptions.EmptyJsonException;
-import eliasstar.json.exceptions.StateMachineException;
 import eliasstar.json.exceptions.InvalidJsonTypeException;
 import eliasstar.json.exceptions.JsonException;
 import eliasstar.json.exceptions.JsonNumberFormatException;
 import eliasstar.json.exceptions.MalformedJsonException;
+import eliasstar.json.exceptions.StateMachineException;
 import eliasstar.json.objects.JsonArray;
 import eliasstar.json.objects.JsonObject;
 
@@ -58,25 +75,38 @@ public class Json {
      * @return A JSON encoded string
      */
     public static String toJson(Object object) throws JsonException {
-        String json;
-
         if (object == null) {
-            json = "null";
+            return "null";
 
         } else if (object instanceof JsonSerializable) {
-            json = ((JsonSerializable) object).toJSON();
+            return ((JsonSerializable) object).toJson();
 
-        } else if (object instanceof Boolean || object instanceof Byte || object instanceof Short || object instanceof Integer || object instanceof Long || object instanceof Float || object instanceof Double) {
-            json = object.toString();
+        } else if (object instanceof Boolean) {
+            return object.toString();
+
+        } else if (object instanceof BigDecimal) {
+            return ((BigDecimal) object).toString();
+
+        } else if (object instanceof Number) {
+            Number n = (Number) object;
+            double d = n.doubleValue();
+
+            if (Double.isNaN(d) || Double.isInfinite(d)) {
+                return "null";
+            }
+
+            if (d >= Long.MIN_VALUE && d <= Long.MAX_VALUE && Math.floor(d) == d) {
+                return Long.toString(n.longValue());
+            }
+
+            return Double.toString(d);
 
         } else if (object instanceof String || object instanceof Character) {
-            json = '"' + object.toString() + '"';
+            return '"' + object.toString() + '"';
 
         } else {
             throw new JsonException("Encountered instance of class which is not handled: " + object.getClass().toString());
         }
-
-        return json;
     }
 
     /**
@@ -329,8 +359,8 @@ public class Json {
         default:
             if (json.matches("-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?")) {
                 try {
-                    return NumberFormat.getInstance().parse(json);
-                } catch (ParseException ex) {
+                    return (Number) new BigDecimal(json);
+                } catch (NumberFormatException ex) {
                     throw new JsonNumberFormatException("Exception while parsing number: " + json, ex);
                 }
             }

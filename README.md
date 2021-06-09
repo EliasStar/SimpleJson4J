@@ -4,7 +4,7 @@
 ## Downloads
 ### Jar
 Releases can be downloaded [here](https://github.com/EliasStar/SimpleJson4J/releases).
-"sources" suffix includes the raw, uncompiled sourcecode for reference and the javadoc can be found in the "javadoc" suffix jar.
+The javadoc can be found in the "javadoc" suffix jar and the "sources" suffix jar includes the raw, uncompiled source code for reference.
 
 ### Maven
 #### pom.xml
@@ -43,7 +43,7 @@ SimpleJson4J - Simple yet general JSON library for Java providing a toJson and f
 Copyright (C) 2021 Elias*
 
 This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
+it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 any later version.
 
